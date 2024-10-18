@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
   });
 });
 
-router.use("/user")
-router.use("/todoList")
+// router.use("/user")
+// router.use("/todoList")
 
 module.exports = router;
