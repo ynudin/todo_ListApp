@@ -7,25 +7,21 @@ const todoRoutes = require('./routes/todo-router');
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 // Middleware untuk parsing JSON
 app.use(express.json());
 
 // Koneksi ke MongoDB
 mongoose.connect(process.env.MONGO_URI)
-    .then(() => {
-        console.log('MongoDB connected successfully');
-    })
-    .catch(err => {
-        console.error('MongoDB connection error:', err);
-    });
+    .then(() => console.log('MongoDB connected successfully'))
+    .catch(err => console.error('MongoDB connection error:', err));
 
-// Rute
+// Routes
 app.use('/api/user', userRoutes);
 app.use('/api/todos', todoRoutes);
 
-
+// Start server
 app.listen(PORT, () => {
-  console.log("server running on Port" + 3000);
+    console.log(`Server running on Port ${PORT}`);
 });
